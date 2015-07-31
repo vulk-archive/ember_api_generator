@@ -1,4 +1,4 @@
-class <%= class_name %>Controller < ApplicationController
+class <%= class_name.pluralize %>Controller < ApplicationController
   def index
     # probably should search by authtoken
     # if params[:xxx_id]
