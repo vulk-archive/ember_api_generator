@@ -16,6 +16,13 @@ class <%= class_name.pluralize %>Controller < ApplicationController
   def show
     @<%= class_name.downcase.pluralize %> = <%= class_name %>.find(params[:id])
     render json: {:<%= class_name.downcase.pluralize %> => @<%= class_name.downcase.pluralize %>}
+    
+    @<%= class_name.downcase.pluralize %> = <%= class_name %>.where(id: params[:id])
+    if !@<%= class_name.downcase.pluralize %>.empty?
+      render json: {:<%= class_name.downcase.pluralize %> => @<%= class_name.downcase.pluralize %>.first}
+    else
+      render json: {:error => '<%= class_name %> not found'}, :status => 404
+    end
   end
 
   def create
