@@ -2,7 +2,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
   def index
     # probably should search by authtoken
     # if params[:xxx_id]
-    #   <%= class_name.underscore.pluralize %> = <%= class_name %>.where(xxx_id: params[:xxx_id])
+    #   @<%= class_name.underscore.pluralize %> = <%= class_name %>.where(xxx_id: params[:xxx_id])
     # else
       @<%= class_name.underscore.pluralize %> = <%= class_name %>.all
     # end 
@@ -14,9 +14,6 @@ class <%= class_name.pluralize %>Controller < ApplicationController
   end
 
   def show
-    @<%= class_name.underscore.pluralize %> = <%= class_name %>.find(params[:id])
-    render json: {:<%= class_name.underscore.pluralize %> => @<%= class_name.underscore.pluralize %>}
-    
     @<%= class_name.underscore.pluralize %> = <%= class_name %>.where(id: params[:id])
     if !@<%= class_name.underscore.pluralize %>.empty?
       render json: {:<%= class_name.underscore.pluralize %> => @<%= class_name.underscore.pluralize %>.first}
