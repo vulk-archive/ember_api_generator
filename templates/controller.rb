@@ -58,7 +58,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
 
   def <%= class_name.downcase %>_params
     # add your column list here
-    params.require(:<%= class_name.downcase %>).permit(
+    params.require(:<%= class_name.underscore %>).permit(
     )
   end
 end
