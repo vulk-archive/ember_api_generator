@@ -18,7 +18,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
     if !@<%= class_name.underscore.pluralize %>.empty?
       render json: {:<%= class_name.underscore.pluralize %> => @<%= class_name.underscore.pluralize %>.first}
     else
-      render json: {:error => '<%= class_name %> not found'}, :status => 404
+      render json: {:errors => '<%= class_name %> not found'}, :status => 404
     end
   end
 
