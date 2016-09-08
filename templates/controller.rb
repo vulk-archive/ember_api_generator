@@ -33,7 +33,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
 
   def update 
     @<%= class_name.underscore.pluralize %> = <%= class_name %>.find(params[:id])
-    if @<%= class_name.underscore.pluralize %>.update!(<%= class_name.downcase %>_params)
+    if @<%= class_name.underscore.pluralize %>.update(<%= class_name.downcase %>_params)
       render json: {:<%= class_name.underscore.pluralize %> => @<%= class_name.underscore.pluralize %>}
     else
       render :json => { :errors => @<%= class_name.underscore.pluralize %>.errors.full_messages }, :status => 422
@@ -44,7 +44,7 @@ class <%= class_name.pluralize %>Controller < ApplicationController
     @<%= class_name.underscore.pluralize %> = <%= class_name %>.find(params[:id])
     if @<%= class_name.underscore.pluralize %>
       @<%= class_name.underscore.pluralize %>.save
-      if @<%= class_name.underscore.pluralize %>.destroy!
+      if @<%= class_name.underscore.pluralize %>.destroy
         render json: {:<%= class_name.underscore.pluralize %> => @<%= class_name.underscore.pluralize %>}
       else
         render :json => { :errors => @<%= class_name.underscore.pluralize %>.errors.full_messages }, :status => 422
